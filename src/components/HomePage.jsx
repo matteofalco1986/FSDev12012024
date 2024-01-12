@@ -2,7 +2,7 @@ import Search from "./Search";
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="d-flex align-items-center">
       <Search />
     </div>
   )
