@@ -70,3 +70,7 @@ h5 {
 .min-max-detail {
   font-weight: 700;
 }
+
+.forecast-row {
+  justify-content: space-between;
+}

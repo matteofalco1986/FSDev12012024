@@ -81,7 +81,6 @@ const Search = () => {
     await fetchCoordinates(searchQuery);
     await fetchWeatherData(lat, lon);
     await fetchForecastData(lat, lon);
-
   }
 
   return (
