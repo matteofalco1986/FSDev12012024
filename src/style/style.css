@@ -4,9 +4,7 @@ body {
   padding: 30px;
 }
 
-.home-page, .search-bar-container {
-  position: relative;
-}
+
 
 p {
   margin-bottom: 0;
@@ -19,7 +17,7 @@ p {
 
 .condition-tab {
   gap: 30px;
-  background-color: rgb(253, 203, 132);
+  background-color:rgb(253, 203, 132) ;
   padding: 20px;
   border-radius: 10px;
   align-items: center;
@@ -55,11 +53,15 @@ h5 {
   justify-content: center;
 }
 
-.main-weather {
+.current-weather {
   text-align: center;
   position: sticky;
-  top: 20px;
+  top: 0;
   padding: 20px;
+  z-index: 1;
+  background-color: #F9EFDB;
+  border-radius: 10px;
+  margin-bottom: 30px;
 }
 
 .main-temp {

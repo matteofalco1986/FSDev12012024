@@ -84,29 +84,27 @@ const Search = () => {
   }
 
   return (
-    <>
-      <div className="search-bar-container">
-        <Container className="searchBar">
-          <Row>
-            <Col xs={12} md={6}>
-              <Form className="d-flex align-items-center" onSubmit={retrieveData}>
-                <Form.Control placeholder="Search for a place..." onChange={(e) => {
-                  setSearchQuery(e.target.value);
-                }} />
-                <Button variant="primary" type="submit" className="d-none">Submit request</Button>
-              </Form>
-            </Col>
-            <Col xs={12} md={6} className="current-date">
-              <MyDate />
-            </Col>
-          </Row>
-        </Container>
-        <CurrentWeather weatherInfo={weatherToPass} />
-        <Conditions weatherInfo={weatherToPass} />
-        <Forecast forecastInfo={forecastToPass} />
-      </div>
+    <div className="search-bar-container">
+      <Container className="searchBar">
+        <Row>
+          <Col xs={12} md={6}>
+            <Form className="d-flex align-items-center" onSubmit={retrieveData}>
+              <Form.Control placeholder="Search for a place..." onChange={(e) => {
+                setSearchQuery(e.target.value);
+              }} />
+              <Button variant="primary" type="submit" className="d-none">Submit request</Button>
+            </Form>
+          </Col>
+          <Col xs={12} md={6} className="current-date">
+            <MyDate />
+          </Col>
+        </Row>
+      </Container>
+      <CurrentWeather weatherInfo={weatherToPass} />
+      <Conditions weatherInfo={weatherToPass} />
+      <Forecast forecastInfo={forecastToPass} />
+    </div>
 
-    </>
   )
 }
 
