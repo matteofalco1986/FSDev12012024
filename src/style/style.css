@@ -94,6 +94,10 @@ h5 {
   .forecast-col {
     flex-basis: calc((100/10) * 1%);
   }
+  .five-days-forecast{
+    
+    flex-basis: calc((100/6) * 1%);
+  }
 }
 
 .forecast-conditions {

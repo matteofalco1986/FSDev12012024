@@ -33,14 +33,14 @@ class Forecast extends React.Component {
   render() {
     return (
       <Container>
-        <h2>Next day forecast</h2>
+        <h2>Today's Forecast</h2>
         <Row className="forecast-row">
           {this.state.isLoading && (
             this.state.days.map((i) => {
               return (
                 <Col key={i} xs={6} md={3} lg={1} className="forecast-col">
                   <div className="card-component">
-                    <Spinner variant="danger"/>
+                    <Spinner className="mt-3" variant="danger"/>
                   </div>
                 </Col>
               )
@@ -57,7 +57,34 @@ class Forecast extends React.Component {
                       <p className="forecast-time">{item.dt_txt.slice(11, 16)}</p>
                     </div>
                   </Col>
-
+                )
+              })
+          )}
+        </Row>
+        <h2>5 Days Forecast</h2>
+        <Row className="forecast-row">
+          {this.state.isLoading && (
+            this.state.days.map((i) => {
+              return (
+                <Col key={i} xs={6} md={3} lg={1} className="forecast-col">
+                  <div className="card-component">
+                    <Spinner className="mt-3" variant="danger"/>
+                  </div>
+                </Col>
+              )
+            })
+          )}
+          {!this.state.isLoading && !this.state.isError && (
+            this.state.passedInfo.list.filter((item, i) => (i === 8 || i % 8 === 0))
+              .map((item, i) => {
+                return (
+                  <Col key={i} xs={6} lg={1} className="forecast-col five-days-forecast">
+                    <div className="card-component">
+                      <img src={"http://openweathermap.org/img/w/" + item.weather[0].icon + '.png'} alt="weather ion" />
+                      <p className="forecast-conditions">{item.weather[0].description}</p>
+                      <p className="forecast-time">{item.dt_txt.slice(0, 10)}</p>
+                    </div>
+                  </Col>
                 )
               })
           )}
