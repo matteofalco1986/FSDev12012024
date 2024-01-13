@@ -9,7 +9,8 @@ class Forecast extends React.Component {
   state = {
     isLoading: true,
     isError: false,
-    passedInfo: null
+    passedInfo: null,
+    days: [0, 1, 2, 3, 4, 5, 6, 7]
   }
 
   componentDidMount() {
@@ -32,15 +33,24 @@ class Forecast extends React.Component {
   render() {
     return (
       <Container>
+        <h2>Next day forecast</h2>
         <Row className="forecast-row">
           {this.state.isLoading && (
-            <Spinner variant="danger" />
+            this.state.days.map((i) => {
+              return (
+                <Col key={i} xs={6} md={3} lg={1} className="forecast-col">
+                  <div className="card-component">
+                    <Spinner variant="danger"/>
+                  </div>
+                </Col>
+              )
+            })
           )}
           {!this.state.isLoading && !this.state.isError && (
             this.state.passedInfo.list.filter((item, i) => i < 8)
               .map((item, i) => {
                 return (
-                  <Col key={i} xs={6} lg={1}>
+                  <Col key={i} xs={6} lg={1} className="forecast-col">
                     <div className="card-component">
                       <img src={"http://openweathermap.org/img/w/" + item.weather[0].icon + '.png'} alt="weather ion" />
                       <p className="forecast-conditions">{item.weather[0].description}</p>
