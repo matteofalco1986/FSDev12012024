@@ -40,7 +40,7 @@ class Forecast extends React.Component {
               return (
                 <Col key={i} xs={6} md={3} lg={1} className="forecast-col">
                   <div className="card-component">
-                    <Spinner className="mt-3" variant="danger"/>
+                    <Spinner className="mt-3" variant="danger" />
                   </div>
                 </Col>
               )
@@ -55,6 +55,10 @@ class Forecast extends React.Component {
                       <img src={"http://openweathermap.org/img/w/" + item.weather[0].icon + '.png'} alt="weather ion" />
                       <p className="forecast-conditions">{item.weather[0].description}</p>
                       <p className="forecast-time">{item.dt_txt.slice(11, 16)}</p>
+                      <div className="d-flex justify-content-center min-max-small-container">
+                        <p className="min-max-small">L:{Math.floor(item.main.temp_min)}&deg;</p>
+                        <p className="min-max-small">H:{Math.floor(item.main.temp_max)}&deg;</p>
+                      </div>
                     </div>
                   </Col>
                 )
@@ -68,7 +72,7 @@ class Forecast extends React.Component {
               return (
                 <Col key={i} xs={6} md={3} lg={1} className="forecast-col">
                   <div className="card-component">
-                    <Spinner className="mt-3" variant="danger"/>
+                    <Spinner className="mt-3" variant="danger" />
                   </div>
                 </Col>
               )
@@ -81,8 +85,12 @@ class Forecast extends React.Component {
                   <Col key={i} xs={6} lg={1} className="forecast-col five-days-forecast">
                     <div className="card-component">
                       <img src={"http://openweathermap.org/img/w/" + item.weather[0].icon + '.png'} alt="weather ion" />
-                      <p className="forecast-conditions">{item.weather[0].description}</p>
                       <p className="forecast-time">{item.dt_txt.slice(0, 10)}</p>
+                      <p className="forecast-conditions">{item.weather[0].description}</p>
+                    </div>
+                    <div className="d-flex justify-content-center min-max-small-container pb-3">
+                      <p className="min-max-small">L:{Math.floor(item.main.temp_min)}&deg;</p>
+                      <p className="min-max-small">H:{Math.floor(item.main.temp_max)}&deg;</p>
                     </div>
                   </Col>
                 )
