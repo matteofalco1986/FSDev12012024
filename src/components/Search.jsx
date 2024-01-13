@@ -85,7 +85,7 @@ const Search = () => {
 
   return (
     <>
-      <div>
+      <div className="search-bar-container">
         <Container className="searchBar">
           <Row>
             <Col xs={12} md={6}>
