@@ -15,16 +15,16 @@ const Conditions = ({ weatherInfo }) => {
   return (
     <Container>
       <Row>
-        <Col xs={12} md={6} lg={3}>
+        <Col xs={12} md={6}>
           <Wind infoToPass={infoToPass.wind}/>
         </Col>
-        <Col xs={12} md={6} lg={3}>
+        <Col xs={12} md={6}>
+          <RainChance infoToPass={infoToPass.clouds}/>
+        </Col>
+        <Col xs={12} md={6}>
           <Temperature infoToPass={infoToPass.main}/>
         </Col>
-        <Col xs={12} md={6} lg={3}>
-          <Temperature infoToPass={infoToPass.main}/>
-        </Col>
-        <Col xs={12} md={6} lg={3}>
+        <Col xs={12} md={6}>
           <Humidity infoToPass={infoToPass.main}/>
         </Col>
       </Row>

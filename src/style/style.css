@@ -1,0 +1,72 @@
+body {
+  background-color: #F9EFDB;
+  min-width: 360px;
+  padding: 30px;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+
+.internal-icon {
+  gap: 60px;
+}
+
+.condition-tab {
+  gap: 30px;
+  background-color: rgb(253, 203, 132);
+  padding: 20px;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.condition-detail {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+h5 {
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgb(84, 84, 84);
+}
+
+.right-hand-side-card {
+  font-size: 0.8rem;
+  margin-bottom: 5px;
+}
+
+.current-date {
+  margin-bottom: 10px;
+}
+
+.form-control {
+  margin-bottom: 20px;
+}
+
+.current-date-item {
+  justify-content: center;
+}
+
+.main-weather {
+  text-align: center;
+}
+
+.main-temp {
+  font-size: 4rem;
+}
+
+.weather-conditions {
+  font-size: 1.5rem;
+}
+
+.min-max-temp {
+  gap: 15px;
+}
+
+.min-max-detail {
+  font-weight: 700;
+}

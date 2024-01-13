@@ -3,9 +3,10 @@ import Conditions from "./Conditions";
 import CurrentWeather from "./CurrentWeather";
 import MyDate from "./MyDate";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Search = () => {
+
 
   // Urls e token info
   const geoCodingUrl = 'http://api.openweathermap.org/geo/1.0/direct?';
@@ -16,10 +17,17 @@ const Search = () => {
   // Variables
   const [searchQuery, setSearchQuery] = useState('');
   const [weatherToPass, setWeatherToPass] = useState({})
-  let lat = '';
-  let lon = '';
+  const [forecastToPass, setForecastToPass] = useState({})
+  let lat = '53.9591';
+  let lon = '-1.0815';
   let weatherData = {};
+  let forecastData = {};
 
+  // Caricamento default al montaggio del componente
+  useEffect(() => {
+    fetchWeatherData(lat, lon);
+    fetchForecastData(lat, lon);
+  }, [])
 
   const fetchCoordinates = async (_searchQuery) => {
     try {
@@ -45,6 +53,23 @@ const Search = () => {
       // console.log(data);
       weatherData = data;
       setWeatherToPass(data);
+      // console.log(data);
+
+    } catch (err) {
+      console.error('Error: ', err);
+    }
+  }
+
+  const fetchForecastData = async (_lat, _lon) => {
+    try {
+      const res = await fetch(`${weatherForecastUrl}lat=${_lat}&lon=${_lon}&units=metric&APPID=${apiKey}`);
+      if (!res.ok) {
+        throw new Error('Network connection was not ok');
+      }
+      const data = await res.json();
+      forecastData = data;
+      setForecastToPass(data);
+      // console.log(data);
 
     } catch (err) {
       console.error('Error: ', err);
@@ -55,17 +80,15 @@ const Search = () => {
     e.preventDefault();
     await fetchCoordinates(searchQuery);
     await fetchWeatherData(lat, lon);
+    await fetchForecastData(lat, lon);
 
   }
 
   return (
     <>
       <div>
-        <Container>
+        <Container className="searchBar">
           <Row>
-            <Col xs={12} md={6}>
-              <MyDate />
-            </Col>
             <Col xs={12} md={6}>
               <Form className="d-flex align-items-center" onSubmit={retrieveData}>
                 <Form.Control placeholder="Search for a place..." onChange={(e) => {
@@ -74,11 +97,14 @@ const Search = () => {
                 <Button variant="primary" type="submit" className="d-none">Submit request</Button>
               </Form>
             </Col>
+            <Col xs={12} md={6} className="current-date">
+              <MyDate />
+            </Col>
           </Row>
         </Container>
+        <CurrentWeather weatherInfo={weatherToPass} />
         <Conditions weatherInfo={weatherToPass} />
-        <Forecast />
-        <CurrentWeather />
+        <Forecast forecastInfo={forecastToPass} />
       </div>
 
     </>
